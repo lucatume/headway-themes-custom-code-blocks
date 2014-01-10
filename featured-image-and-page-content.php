@@ -28,12 +28,9 @@ $customClasses = array(
 );
 // get the post content
 $postContent = null;
-if (have_posts()) {
-	
-	while (have_posts()) {
-		the_post();
-		$postContent = get_the_content();
-	}
+if (is_page($post->ID)) {
+	the_post();
+	$postContent = get_the_content();
 }
 // apply filter to content
 if ($shouldFilterPostContent) {
