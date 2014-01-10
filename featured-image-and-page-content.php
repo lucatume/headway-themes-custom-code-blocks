@@ -1,14 +1,15 @@
 <?php
-$imgSrc = null;
-// if it's not a page show the header image
+$postThumbnail = null;
+// if it's not a page use the header image
 if (!is_page($post->ID) or !current_theme_supports('post-thumbnails') or !has_post_thumbnail($post->ID)) {
-	$imgSrc = get_header_image();
+	// will return null if no header image or no header image support
+	$postThumbnail = get_the_post_thumbnail($post->ID);
 }
 else {
-	$imgSrc = wp_get_attachment_url(get_post_thumbnail_id($post->ID ));
+	$postThumbnail = get_the_post_thumbnail($post->ID, 'full', array(
+		'class' => 'attachment-$size max-width'
+	));
 }
-// create a CSS inline style string to use the post thumbnail as the block-element bg
-
-$cssInlineStyleString = 'style="background-image:url(' .$imgSrc.');background-size:cover;"';
-
+// echo the post thumbnail
+echo $postThumbnail;
 ?>
