@@ -5,7 +5,7 @@ if (!is_page($post->ID) or !current_theme_supports('post-thumbnails') or !has_po
 	$imgSrc = get_header_image();
 }
 else {
-	$imgSrc = wp_get_attachment_url(get_post_thumbnail_id($psot->ID ));
+	$imgSrc = wp_get_attachment_url(get_post_thumbnail_id($post->ID ));
 }
 // create a CSS inline style string to use the post thumbnail as the block-element bg
 
